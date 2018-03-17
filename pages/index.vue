@@ -24,10 +24,12 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
-
+import header from '~/components/Header/header.vue'
 export default {
+  name:'Home',
   components: {
-    AppLogo
+    AppLogo,
+    header
   }
 }
 </script>
