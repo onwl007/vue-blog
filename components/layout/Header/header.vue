@@ -65,7 +65,7 @@
     },
     methods: {
       setCornerStyle() {
-        const el = this.$refs.menu && this.$refs.menu[this.menuIndex()] ? this.$refs.menu[this.menuIndex()].$el : null
+        const el = this.$refs.menu && this.$refs.menu[this.menuIndex] ? this.$refs.menu[this.menuIndex].$el : null
         if (!el) {
           this.cornerStyle = null
         } else {
@@ -102,6 +102,6 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="stylus">
+  @import "head.styl"
 </style>
