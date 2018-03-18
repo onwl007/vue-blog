@@ -1,5 +1,7 @@
 <template>
   <section class="container">
+    <header></header>
+    <footer></footer>
     <div>
       <app-logo/>
       <h1 class="title">
@@ -24,12 +26,14 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
-import header from '~/components/Header/header.vue'
+import header from '~/components/layout/Header/header.vue'
+import footer from '~/components/layout/Footer/footer.vue'
 export default {
   name:'Home',
   components: {
     AppLogo,
-    header
+    header,
+    footer
   }
 }
 </script>
