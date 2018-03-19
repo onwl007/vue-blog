@@ -3,20 +3,20 @@
     <div class="wrapper">
       <div class="menu-list">
         <nuxt-link v-for="menu in menus"
-        ref="menu"
-        class="menu-item"
-        :key="menu.key"
-        :to="{name:menu.key}"
-        exact>
+                   ref="menu"
+                   class="menu-item"
+                   :key="menu.key"
+                   :to="{name:menu.key}"
+                   exact>
           {{menu.title}}
         </nuxt-link>
       </div>
       <div class="social-list">
         <a :href="social.url" class="social-item" target="_blank" rel="noopener"
-        :class="[`social-${social.icon}`]"
-        v-for="social in socials"
-        :key="social.icon"
-        :title="social.title">
+           :class="[`social-${social.icon}`]"
+           v-for="social in socials"
+           :key="social.icon"
+           :title="social.title">
           <i class="icon" :class="[`icon-${social.icon}`]"></i>
         </a>
       </div>
@@ -43,6 +43,7 @@
 
 <script>
   import config from '@@/app.config'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: "footer",
@@ -52,7 +53,12 @@
         socials: config.constant.socials
       }
     },
-    computed: {}
+    computed: {
+      ...mapGetters({
+        blogger: 'user/blogger',
+        mobileLayout: 'app/mobileLayout'
+      })
+    }
   }
 </script>
 
