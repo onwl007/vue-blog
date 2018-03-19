@@ -46,7 +46,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    name: "footer",
+    name: "AppFooter",
     data() {
       return {
         menus: config.constant.menus,

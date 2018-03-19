@@ -37,7 +37,7 @@
 <script>
   import config from '@@/app.config'
     export default {
-        name: "tool",
+        name: "AppTool",
       data(){
           return{
             showShareList:false,

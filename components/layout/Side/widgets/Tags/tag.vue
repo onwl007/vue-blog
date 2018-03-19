@@ -21,7 +21,7 @@
   import {Card, Tag} from '@/components/common'
 
   export default {
-    name: "tags",
+    name: "Tags",
     components: {
       Card,
       Tag

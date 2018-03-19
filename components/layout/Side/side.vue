@@ -13,7 +13,7 @@
   import {Affix} from '@/components/common'
 
   export default {
-    name: "side",
+    name: "AppSide",
     components: {
       Affix,
       Hots,

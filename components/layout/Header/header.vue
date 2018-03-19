@@ -40,7 +40,7 @@
   import config from '@@/app.config'
 
   export default {
-    name: "header",
+    name: "AppHeader",
     data() {
       return {
         logo,

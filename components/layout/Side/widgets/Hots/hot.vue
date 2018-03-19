@@ -24,7 +24,7 @@
   import {Card} from '@/components/common'
 
   export default {
-    name: "hot",
+    name: "Hots",
     comments: {
       Card
     },
