@@ -77,57 +77,57 @@
       Loading,
       Editor
     },
-    props:{
-      child:{
-        type:Boolean,
-        default:false
+    props: {
+      child: {
+        type: Boolean,
+        default: false
       },
-      placeholder:{
-        type:String,
-        default:'说点什么'
+      placeholder: {
+        type: String,
+        default: '说点什么'
       },
-      loading:{
-        type:Boolean,
-        default:false
+      loading: {
+        type: Boolean,
+        default: false
       },
-      parent:{
-        type:String,
-        default:''
+      parent: {
+        type: String,
+        default: ''
       },
-      reply:{
-        type:Object,
-        default(){
+      reply: {
+        type: Object,
+        default() {
           return null
         }
       }
     },
-    data(){
-      return{
-        roleMap:config.auth.roleMap,
-        model:{
-          name:'',
-          email:'',
-          site:''
+    data() {
+      return {
+        roleMap: config.auth.roleMap,
+        model: {
+          name: '',
+          email: '',
+          site: ''
         },
-        avatar:defaultAvatar,
-        content:'',
-        editMode:false
+        avatar: defaultAvatar,
+        content: '',
+        editMode: false
       }
     },
-    computed:{
+    computed: {
       ...mapGetters({
-        articleDetail:'article/detail',
-        authInfo:'auth/info',
+        articleDetail: 'article/detail',
+        authInfo: 'auth/info',
       }),
-      type () {
+      type() {
         return this.child ? '回复' : this.articleDetail ? '评论' : '留言'
       },
     },
-    watch:{
-      reply (val){
-        this.$refs.editor[val ? 'focus' :'blur']()
+    watch: {
+      reply(val) {
+        this.$refs.editor[val ? 'focus' : 'blur']()
       },
-      authInfo(val){
+      authInfo(val) {
         if (!val) {
           this.model.name = ''
           this.model.email = ''
@@ -136,15 +136,15 @@
         }
       }
     },
-    mounted(){
+    mounted() {
       this.initUser()
     },
-    methods:{
+    methods: {
       ...mapActions({
         publish: 'comment/publish',
         clearInfo: 'auth/clearInfo'
       }),
-      initUser () {
+      initUser() {
         if (this.authInfo) {
           this.model.name = this.authInfo.name
           this.model.email = this.authInfo.email
@@ -152,7 +152,7 @@
           this.avatar = this.authInfo.avatar
         }
       },
-      checkUserInfoChange () {
+      checkUserInfoChange() {
         const model = this.model
         for (let key in model) {
           if (model.hasOwnProperty(key)) {
@@ -163,14 +163,14 @@
         }
         return false
       },
-      async handleSubmit (params = {}) {
+      async handleSubmit(params = {}) {
         if (this.loading) {
           return
         }
         if (!this.content) {
           return this.$message.warning('你要说啥？')
         }
-        const { name, email, site } = this.model
+        const {name, email, site} = this.model
         if (!name) {
           return this.$message.warning('你的昵称呢？')
         }
@@ -210,7 +210,7 @@
         } else {
           params.forward = this.parent
         }
-        const { success, data } = await this.publish(params)
+        const {success, data} = await this.publish(params)
         if (success) {
           this.initUser()
           this.content = ''
@@ -219,10 +219,10 @@
         this.$message.success(`${this.type}成功`)
         this.$emit('on-publish', data)
       },
-      handleClear () {
+      handleClear() {
         this.clearInfo()
       },
-      handleClearReply () {
+      handleClearReply() {
         this.$emit('on-clear-reply')
       }
     }
