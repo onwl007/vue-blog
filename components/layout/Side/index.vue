@@ -23,5 +23,5 @@
 </script>
 
 <style lang="stylus">
-  @import "side.styl"
+  @import "index.styl"
 </style>

@@ -39,5 +39,5 @@
 </script>
 
 <style lang="stylus">
-  @import "tag.styl"
+  @import "index.styl"
 </style>

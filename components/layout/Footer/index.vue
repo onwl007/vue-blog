@@ -63,5 +63,5 @@
 </script>
 
 <style lang="stylus">
-  @import "footer.styl"
+  @import "index.styl"
 </style>

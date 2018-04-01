@@ -83,5 +83,5 @@
 </script>
 
 <style lang="stylus">
-  @import "tool.styl"
+  @import "index.styl"
 </style>

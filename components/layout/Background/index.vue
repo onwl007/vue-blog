@@ -132,5 +132,5 @@
 </script>
 
 <style lang="stylus">
-  @import "background.styl"
+  @import "index.styl"
 </style>

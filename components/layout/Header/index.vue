@@ -103,5 +103,5 @@
 </script>
 
 <style lang="stylus">
-  @import "head.styl"
+  @import "index.styl"
 </style>

@@ -37,5 +37,5 @@
 </script>
 
 <style lang="stylus">
-  @import "hot.styl"
+  @import "index.styl"
 </style>
