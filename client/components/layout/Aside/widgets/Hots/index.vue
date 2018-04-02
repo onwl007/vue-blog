@@ -1,7 +1,3 @@
-<style lang="stylus">
-  @import "index"
-</style>
-
 <template>
   <Card class="widget-hots">
     <div class="title" slot="header">
@@ -29,7 +25,7 @@
 
   export default {
     name: "Hots",
-    comments: {
+    components: {
       Card
     },
     computed: {
@@ -40,4 +36,7 @@
   }
 </script>
 
+<style lang="stylus">
+  @import "index.styl"
+</style>
 
