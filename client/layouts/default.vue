@@ -10,7 +10,7 @@
         </transition>
       </div>
     </main>
-    <AppTool/>
+    <AppTool />
     <AppFooter ref="footer"/>
   </div>
 </template>
@@ -47,7 +47,7 @@
     },
     computed: {
       noAsidePage() {
-        return ['music', 'archive', 'guestbook', 'about'].includes(this.$router.name)
+        return ['music', 'archive', 'guestbook', 'about'].includes(this.$route.name)
       }
     },
     mounted() {
@@ -80,7 +80,7 @@
         }
 
         .page-aside-widget{
-          flex 1 0 0 320px
+          flex 0 0 320px
           width 320px
           margin-left 12px
         }
