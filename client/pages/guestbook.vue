@@ -47,9 +47,10 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-  import { Card, Comment, Affix } from '@/components/common'
+  import {mapGetters} from 'vuex'
+  import {Card, Comment, Affix} from '@/components/common'
   import logo from '@/static/images/logo.svg'
+
   export default {
     name: 'Guestbook',
     components: {
@@ -57,10 +58,10 @@
       Card,
       Comment
     },
-    layout ({ store }) {
+    layout({store}) {
       return store.getters['app/mobileLayout'] ? 'mobile' : 'default'
     },
-    head () {
+    head() {
       return {
         title: 'Guestbook',
         bodyAttrs: {
@@ -68,14 +69,14 @@
         }
       }
     },
-    async fetch ({ store }) {
+    async fetch({store}) {
       store.commit('article/CLEAR_DETAIL')
       await store.dispatch('comment/fetchList', {
         type: 1,
         page: 1
       })
     },
-    data () {
+    data() {
       return {
         logo,
         avatars: {}
@@ -87,11 +88,11 @@
         guestsCount: 'user/guestsCount'
       })
     },
-    mounted () {
+    mounted() {
       this.loadAvatars()
     },
     methods: {
-      loadAvatars () {
+      loadAvatars() {
         this.guests.forEach(item => {
           this.$loadImg(item.avatar, {
             success: () => {
@@ -101,11 +102,11 @@
           })
         })
       },
-      handlePublish () {
+      handlePublish() {
         this.$store.dispatch('user/fetchGuests')
       }
     },
-    afterRouteLeave (to, from, next) {
+    afterRouteLeave(to, from, next) {
       this.$store.commit('comment/CLEAR_LIST')
       next()
     }
