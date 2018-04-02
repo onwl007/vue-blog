@@ -1,4 +1,13 @@
+'use strict'
+
+
 export default {
+
+  auth:{
+    githubTokenKey:'jooger.me.github.token',
+    roleMap:['管理员','普通用户','GitHub用户']
+  },
+
   constant: {
     menus: [
       {key: 'index', title: '首页', icon: 'home'},
