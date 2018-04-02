@@ -6,7 +6,7 @@
       <div class="container">
         <nuxt class="page-main-widget"/>
         <transition name="fade" mode="out-in">
-          <AppSide class="page-aside-widget" v-if="!noAsidePage"/>
+          <AppAside class="page-aside-widget" v-if="!noAsidePage"/>
         </transition>
       </div>
     </main>
@@ -20,7 +20,7 @@
     AppHeader,
     AppBackground,
     AppFooter,
-    AppSide,
+    AppAside,
     AppTool
   } from "../components/layout";
 
@@ -28,7 +28,7 @@
     name: 'Default',
     components: {
       AppTool,
-      AppSide,
+      AppAside,
       AppFooter,
       AppBackground,
       AppHeader
