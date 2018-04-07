@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: "Background",
+        name: "AppBackground",
       data(){
           return{}
       },
