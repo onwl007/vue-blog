@@ -36,6 +36,7 @@
 
 <script>
   import config from '@@/app.config'
+  import { scrollTo, easing, requestAnimationFrame, cancelAnimationFrame } from '@/utils'
     export default {
         name: "AppTool",
       data(){
