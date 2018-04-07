@@ -12,8 +12,8 @@
               @input="handleValueChange">
     </textarea>
       <div class="command-bar">
-        <div class="comment-list" v-if="commands.length">
-          <a class="command-item" :class="[`command-item-${item.key}`,showEmoji && item.key==='emoji' && 'active']"
+        <div class="command-list" v-if="commands.length">
+          <a class="command-item" :class="[`command-item-${item.key}`,showEmoji && item.key === 'emoji' && 'active']"
              v-for="item in commands"
              :key="item.key"
              :title="item.title"
@@ -54,7 +54,7 @@
       },
       value: {
         type: String,
-        required: true
+        requierd: true
       },
       placeholder: {
         type: String,
