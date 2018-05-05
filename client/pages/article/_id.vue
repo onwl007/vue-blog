@@ -2,21 +2,20 @@
   <div class="page-article">
     <Card class="article-widget">
       <article class="article-detail" v-if="articleDetail">
-        <h2 class="article-title">{{articleDetail.title}}</h2>
+        <h2 class="article-title">{{ articleDetail.title }}</h2>
         <div class="meta">
           <div class="meta-item category">
-            <i class="icon" v-if="articleDetail.category"
-               :class="[`icon-${getExtendsItemByKey('icon',article.category.extends) || 'tag'}`]"></i>
-            {{articleDetail.category ? articleDetail.category.name :'暂未分类'}}
+            <i class="icon" v-if="articleDetail.category" :class="[`icon-${getExtendsItemByKey('icon', articleDetail.category.extends) || 'tag'}`]"></i>
+            {{ articleDetail.category ? articleDetail.category.name : '暂未分类' }}
           </div>
           <div class="meta-item comments">
-            {{articleDetail.meta.comments}}条评论
+            {{ articleDetail.meta.comments }} 条评论
           </div>
           <div class="meta-item ups">
-            {{articleDetail.meta.ups}}人喜欢
+            {{ articleDetail.meta.ups }} 人喜欢
           </div>
           <div class="meta-item pvs">
-            {{articleDetail.meta.pvs}}次阅读
+            {{ articleDetail.meta.pvs }} 次阅读
           </div>
         </div>
         <div class="thumb" v-if="thumb">
@@ -25,45 +24,44 @@
         <div class="content md-body" v-html="articleDetail.renderedContent"></div>
         <div class="tags">
           <Tag v-for="tag in articleDetail.tag"
-               :key="tag.id"
-               :name="tag.name"
-               :icon="getExtendsItemByKey('icon',tag.extends) || 'tag'"
-               link>
+            :key="tag.id"
+            :name="tag.name"
+            :icon="getExtendsItemByKey('icon', tag.extends) || 'tag'"
+            link>
           </Tag>
         </div>
       </article>
       <Affix class="article-action" offsetTop="80" v-if="articleDetail && !mobileLayout">
         <div class="action-list">
           <a class="action-item like"
-             :class="{ 'liked': isLiked, 'liking': articleDetailLiking }"
-             :title="isLiked ? '已点赞' : ''"
-             :data-count="articleDetail.meta.ups"
-             @click="handleLike">
+            :class="{ 'liked': isLiked, 'liking': articleDetailLiking }"
+            :title="isLiked ? '已点赞' : ''"
+            :data-count="articleDetail.meta.ups"
+            @click="handleLike">
             <i class="icon" :class="[`icon-thumb-up${isLiked ? '-fill' : ''}`]"></i>
             <span class="count" v-if="articleDetail.meta.ups">{{ articleDetail.meta.ups | countFilter }}</span>
           </a>
           <a class="action-item comment"
-             :data-count="articleDetail.meta.comments"
-             @click="handleGoToComment">
+            :data-count="articleDetail.meta.comments"
+            @click="handleGoToComment">
             <i class="icon icon-comment"></i>
-            <span class="count"
-                  v-if="articleDetail.meta.comments">{{ articleDetail.meta.comments | countFilter }}</span>
+            <span class="count" v-if="articleDetail.meta.comments">{{ articleDetail.meta.comments | countFilter }}</span>
           </a>
           <a class="action-item share"
-             @click.stop.prevent="showShareList = !showShareList">
+            @click.stop.prevent="showShareList = !showShareList">
             <i class="icon icon-share"></i>
           </a>
         </div>
         <transition name="fade">
           <div class="share-list" v-show="showShareList"
-               v-clickoutside="handleHideShare">
+            v-clickoutside="handleHideShare">
             <a class="share-item"
-               :class="[item.key]"
-               v-for="item in shareList"
-               :key="item.key"
-               :title="item.title"
-               rel="nofollow"
-               @click="handleShare(item)">
+              :class="[item.key]"
+              v-for="item in shareList"
+              :key="item.key"
+              :title="item.title"
+              rel="nofollow"
+              @click="handleShare(item)">
               <i class="icon" :class="[`icon-${item.key}`]"></i>
             </a>
           </div>
@@ -75,26 +73,25 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
-  import {Card, Tag, Comment, Affix} from '@/components/common'
-  import {scrollTo, easing} from '@/utils'
+  import { mapGetters } from 'vuex'
+  import { Card, Tag, Comment, Affix } from '@/components/common'
+  import { scrollTo, easing } from '@/utils'
   import config from '@@/app.config'
-
   export default {
-    name: "ArticleDetail",
+    name: 'ArticleDetail',
     components: {
       Card,
       Tag,
       Comment,
       Affix
     },
-    layout({store}) {
+    layout ({ store }) {
       return store.getters['app/mobileLayout'] ? 'mobile' : 'default'
     },
-    validate({params}) {
+    validate ({ params }) {
       return !!params.id
     },
-    fetch({params, store}) {
+    fetch ({ params, store }) {
       store.commit('comment/CHANGE_SORT', {
         by: 'createdAt',
         order: -1
@@ -108,17 +105,17 @@
         })
       ])
     },
-    head() {
+    head () {
       const data = this.articleDetail || {}
       return {
         title: data.title || 'Article Not Found',
         meta: [
-          {hid: 'keywords', name: 'keywords', content: data.keywords ? data.keywords.join(',') : data.title},
-          {hid: 'description', name: 'description', content: data.description || data.title}
+          { hid: 'keywords', name: 'keywords', content: data.keywords ? data.keywords.join(',') : data.title },
+          { hid: 'description', name: 'description', content: data.description || data.title }
         ]
       }
     },
-    data() {
+    data () {
       return {
         thumb: '',
         showShareList: false,
@@ -131,28 +128,29 @@
         articleDetailFetching: 'article/detailFetching',
         articleDetailLiking: 'article/detailLiking',
         historyLikes: 'app/history',
+        mobileLayout: 'app/mobileLayout'
       }),
-      isLiked() {
+      isLiked () {
         if (!this.articleDetail) return false
         return !!this.historyLikes.articles.find(item => item === this.articleDetail.id)
       }
     },
-    afterRouteLeave(to, from, next) {
+    afterRouteLeave (to, from, next) {
       this.$store.commit('article/CLEAR_DETAIL')
       this.$store.commit('comment/CLEAR_LIST')
       next()
     },
-    mounted() {
+    mounted () {
       this.loadThumb()
       this.initImageViewer()
     },
-    beforeDestory() {
+    beforeDestroy () {
       if (this.imageViewer) {
         this.imageViewer.destroy()
       }
     },
     methods: {
-      loadThumb() {
+      loadThumb () {
         if (!this.articleDetail || !this.articleDetail.thumb) {
           return
         }
@@ -163,8 +161,9 @@
           }
         })
       },
-      initImageViewer() {
-        this.initImageViewer = new ImageViewer([
+      initImageViewer () {
+        /* eslint-disable no-new */
+        this.imageViewer = new ImageViewer([
           document.querySelector('.article-detail')
         ], {
           targetFilter: elem => elem.nodeName === 'IMG' && elem.naturalWidth && elem.classList.contains('image-view'),
@@ -181,30 +180,29 @@
           parent: null
         })
       },
-      async handleLike() {
+      async handleLike () {
         if (this.isLiked) {
           return this.$message.info('你已经点过赞了')
         }
-        await  this.$store.dispatch('article/like', {
+        await this.$store.dispatch('article/like', {
           id: this.articleDetail.id,
           like: !this.isLiked
         })
       },
-      handleGoToComment() {
+      handleGoToComment () {
         scrollTo('.comment-widget', 500, {
           offset: -80,
           easing: easing['ease']
         })
       },
-      handleHideShare() {
+      handleHideShare () {
         if (this.showShareList) {
           this.showShareList = false
         }
       },
-      handleShare({key}) {
+      handleShare ({ key }) {
         this.$share.share(key)
       }
     }
   }
 </script>
-

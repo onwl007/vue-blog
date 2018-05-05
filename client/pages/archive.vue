@@ -6,7 +6,7 @@
         <div class="keyword">归档</div>
         <div class="count">
           目前共计
-          <em class="num">{{archiveCount}}</em>
+          <em class="num">{{ archivesCount }}</em>
           篇文章
         </div>
       </div>
@@ -15,11 +15,11 @@
           <h3 class="title">标签</h3>
           <div class="list">
             <Tag v-for="item in tags"
-                 :key="item.name"
-                 :name="item.name"
-                 :icon="getExtendsItemByKey('icon',item.extends)"
-                 :count="item.count"
-                 link>
+              :key="item.name"
+              :name="item.name"
+              :icon="getExtendsItemByKey('icon', item.extends)"
+              :count="item.count"
+              link>
             </Tag>
           </div>
         </div>
@@ -27,18 +27,18 @@
           <h3 class="title">文章</h3>
           <ul class="list archive-list">
             <li class="year-item" v-for="archive in archives" :key="archive.year">
-              <h3 class="year">{{archive.year}}</h3>
+              <h3 class="year">{{ archive.year }}</h3>
               <ul class="list month-list">
-                <li class="month-item" v-for="month in archive.months" :key="month.month">
-                  <h4 class="month">{{month.monthStr}}</h4>
+                <li class="month-item"  v-for="month in archive.months" :key="month.month">
+                  <h4 class="month">{{ month.monthStr }}</h4>
                   <ul class="list article-list">
                     <li class="article-item" v-for="article in month.articles" :key="article.id">
                       <article class="article">
-                        <time class="time" :datatime="article.createAt">
+                        <time class="time" :datatitme="article.createdAt">
                           {{ article.createdAt | fmtDate('MM-dd') }}
                         </time>
                         <nuxt-link class="link"
-                                   :to="`/article/${article.id}`">
+                          :to="`/article/${article.id}`">
                           {{ article.title }}
                         </nuxt-link>
                       </article>
@@ -55,24 +55,23 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
-  import {Card, Tag} from '@/components/common'
-
+  import { mapGetters } from 'vuex'
+  import { Card, Tag } from '@/components/common'
   export default {
-    name: "Archive",
+    name: 'Archive',
     components: {
       Card,
       Tag
     },
-    layout({store}) {
+    layout ({ store }) {
       return store.getters['app/mobileLayout'] ? 'mobile' : 'default'
     },
-    head() {
+    head () {
       return {
         title: 'Archives'
       }
     },
-    async fetch({store}) {
+    async fetch ({ store }) {
       await store.dispatch('article/fetchArchives')
     },
     computed: {
@@ -87,7 +86,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>
