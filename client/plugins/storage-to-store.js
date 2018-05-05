@@ -47,5 +47,5 @@ function setUserInfo (store) {
       return
     }
   }
-  return store.dispatch('auth/fetchUserInfo', user && user._id)
+  return store.dispatch('auth/fetchUserInfo', user && user.id)
 }

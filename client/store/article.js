@@ -113,7 +113,7 @@ export const mutations = {
   [LIKE_FAILURE]: state => (state.detail.liking = false),
   [LIKE_SUCCESS]: (state, like) => {
     state.detail.liking = false
-    const article = state.list.data.find(item => item._id === state.detail.data._id)
+    const article = state.list.data.find(item => item.id === state.detail.data.id)
     if (like) {
       state.detail.data.meta.ups++
       article && article.meta.ups++
@@ -125,7 +125,7 @@ export const mutations = {
   [COMMENT_SUCCESS]: state => {
     if (state.detail.data) {
       state.detail.data.meta.comments++
-      const article = state.list.data.find(item => item._id === state.detail.data._id)
+      const article = state.list.data.find(item => item.id === state.detail.data.id)
       if (article) {
         article.meta.comments++
       }

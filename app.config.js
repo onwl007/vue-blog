@@ -1,8 +1,34 @@
 'use strict'
 
+const isProd = process.env.NODE_ENV === 'production'
+
+const baseApiUrl = isProd ? 'https://api.jooger.me' : 'http://127.0.0.1:8080'
 
 export default {
 
+  service: {
+    url: '/',
+    method: 'get',
+    baseURL: baseApiUrl,
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      'Accept': 'application/json'
+    },
+    timeout: 12000,
+    responseType: 'json'
+  },
+  codeMap: {
+    FAILED: -1,
+    SUCCESS: 200,
+    UNAUTHORIZED: 401,
+    FORBIDDEN: 403,
+    SERVER_ERROR: 500,
+    PARAMS_ERROR: 10001
+  },
+  storage: {
+    userKey: isProd ? 'jooger.me.user' : 'jooger.me.user_dev',
+    userLikeKey: isProd ? 'jooger.me.user.like_history' : 'jooger.me.user.like_history_dev'
+  },
   auth:{
     githubTokenKey:'jooger.me.github.token',
     roleMap:['管理员','普通用户','GitHub用户']

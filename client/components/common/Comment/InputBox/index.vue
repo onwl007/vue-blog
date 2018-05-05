@@ -187,10 +187,10 @@
           content: this.content
         }, params)
         if (this.authInfo) {
-          params.author = this.authInfo._id
+          params.author = this.authInfo.id
           if (this.checkUserInfoChange()) {
             params.author = {
-              id: this.authInfo._id,
+              id: this.authInfo.id,
               ...this.model
             }
           }
@@ -200,13 +200,13 @@
           }
         }
         if (this.articleDetail) {
-          params.article = this.articleDetail._id
+          params.article = this.articleDetail.id
         }
         if (this.parent) {
           params.parent = this.parent
         }
         if (this.reply) {
-          params.forward = this.reply._id
+          params.forward = this.reply.id
         } else {
           params.forward = this.parent
         }

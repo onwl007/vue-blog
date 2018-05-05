@@ -25,7 +25,7 @@
         <div class="content md-body" v-html="articleDetail.renderedContent"></div>
         <div class="tags">
           <Tag v-for="tag in articleDetail.tag"
-               :key="tag._id"
+               :key="tag.id"
                :name="tag.name"
                :icon="getExtendsItemByKey('icon',tag.extends) || 'tag'"
                link>
@@ -134,7 +134,7 @@
       }),
       isLiked() {
         if (!this.articleDetail) return false
-        return !!this.historyLikes.articles.find(item => item === this.articleDetail._id)
+        return !!this.historyLikes.articles.find(item => item === this.articleDetail.id)
       }
     },
     afterRouteLeave(to, from, next) {
@@ -186,7 +186,7 @@
           return this.$message.info('你已经点过赞了')
         }
         await  this.$store.dispatch('article/like', {
-          id: this.articleDetail._id,
+          id: this.articleDetail.id,
           like: !this.isLiked
         })
       },

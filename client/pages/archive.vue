@@ -32,13 +32,13 @@
                 <li class="month-item" v-for="month in archive.months" :key="month.month">
                   <h4 class="month">{{month.monthStr}}</h4>
                   <ul class="list article-list">
-                    <li class="article-item" v-for="article in month.articles" :key="article._id">
+                    <li class="article-item" v-for="article in month.articles" :key="article.id">
                       <article class="article">
                         <time class="time" :datatime="article.createAt">
                           {{ article.createdAt | fmtDate('MM-dd') }}
                         </time>
                         <nuxt-link class="link"
-                                   :to="`/article/${article._id}`">
+                                   :to="`/article/${article.id}`">
                           {{ article.title }}
                         </nuxt-link>
                       </article>

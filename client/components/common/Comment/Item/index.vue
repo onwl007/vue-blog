@@ -46,7 +46,7 @@
     <transition name="fade">
       <div class="sub-comments-box" v-show="showSub">
         <CommentList child
-                     :parent="comment._id"
+                     :parent="comment.id"
                      :loading="fetching"
                      :list="children"
                      :sort="sort"
@@ -107,13 +107,13 @@
       forward () {
         if (!this.comment.forward) {
           return null
-        } else if (this.comment.forward._id === this.comment.parent._id) {
+        } else if (this.comment.forward.id === this.comment.parent.id) {
           return null
         }
         return this.comment.forward
       },
       isLiked () {
-        return !!this.historyLikes.comments.find(item => item === this.comment._id)
+        return !!this.historyLikes.comments.find(item => item === this.comment.id)
       },
       listType () {
         return this.child ? '回复' : '评论'
@@ -148,7 +148,7 @@
             article: this.comment.article,
             per_page: this.pagination.per_page || 5,
             page: (this.pagination ? this.pagination.cur_page : 0) + 1,
-            parent: this.comment._id
+            parent: this.comment.id
           }, params)
         }).catch(() => ({}))
         this.fetching = false
@@ -171,13 +171,13 @@
         this.liking = true
         const like = !this.isLiked
         const success = await this.$store.dispatch('comment/like', {
-          id: this.comment._id,
+          id: this.comment.id,
           like
         })
         this.liking = false
         if (success && this.child) {
           const parentComment = this.$parent.$parent.$parent
-          const child = parentComment.children.find(child => child._id === this.comment._id)
+          const child = parentComment.children.find(child => child.id === this.comment.id)
           if (child) {
             child.ups += (like ? 1 : -1)
           }

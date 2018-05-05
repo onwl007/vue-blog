@@ -7,10 +7,10 @@
     <ul class="hot-list" v-if="hotList.length">
       <li class="hot-item"
           v-for="item in hotList"
-          :key="item._id"
+          :key="item.id"
           :title="item.title">
         <nuxt-link class="title"
-                   :to="`/article/${item._id}`"
+                   :to="`/article/${item.id}`"
                    :title="item.title">{{item.title}}
         </nuxt-link>
       </li>

@@ -33,8 +33,8 @@
                    class="guest-item"
                    target="_blank"
                    rel="noopener"
-                   :key="guest._id">
-                  <img class="avatar" :src="avatars[guest._id] || logo" alt="">
+                   :key="guest.id">
+                  <img class="avatar" :src="avatars[guest.id] || logo" alt="">
                   <span class="name">{{ guest.name }}</span>
                 </a>
               </div>
@@ -96,7 +96,7 @@
         this.guests.forEach(item => {
           this.$loadImg(item.avatar, {
             success: () => {
-              this.avatars[item._id] = item.avatar
+              this.avatars[item.id] = item.avatar
               this.$forceUpdate()
             }
           })

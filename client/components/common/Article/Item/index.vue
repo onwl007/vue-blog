@@ -1,7 +1,7 @@
 <template>
   <article class="article-item" :class="{ 'no-desc': !article.description }" :title="article.title">
     <nuxt-link class="article-link"
-               :to="`/article/${article._id}`">
+               :to="`/article/${article.id}`">
       <h2 class="title">{{ article.title }}</h2>
       <div class="summary" v-if="!mini">
         <div class="thumb" v-if="article.thumb">

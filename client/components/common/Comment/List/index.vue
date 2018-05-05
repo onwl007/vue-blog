@@ -15,7 +15,7 @@
       </div>
       <div class="list-content">
         <CommentItem v-for="(item,index) in list"
-                     :key="item._id"
+                     :key="item.id"
                      :comment="item"
                      :child="child"
                      :index="index"

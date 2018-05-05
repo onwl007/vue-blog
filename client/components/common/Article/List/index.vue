@@ -3,7 +3,7 @@
     <template v-if="list.length">
       <ArticleItem v-for="item in list"
                    :mini="mini"
-                   :key="item._id"
+                   :key="item.id"
                    :article="item">
       </ArticleItem>
     </template>

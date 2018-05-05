@@ -66,7 +66,7 @@ export const mutations = {
     }
   },
   [LIKE_SUCCESS]: (state, { id, like }) => {
-    const comment = state.list.data.find(item => item._id === id)
+    const comment = state.list.data.find(item => item.id === id)
     if (comment) {
       comment.ups = comment.ups + (like ? 1 : -1)
     }
