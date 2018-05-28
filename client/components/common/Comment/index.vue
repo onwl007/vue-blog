@@ -18,12 +18,12 @@
 </template>
 
 <script>
-  import {mapGetters, mapMutations, mapActions} from 'vuex'
+  import { mapGetters, mapMutations, mapActions } from 'vuex'
   import CommentInputBox from './InputBox'
   import CommentList from './List'
 
   export default {
-    name: "Comment",
+    name: 'Comment',
     components: {
       CommentInputBox,
       CommentList
@@ -35,7 +35,7 @@
         commentPagination: 'comment/pagination',
         commentListFetching: 'comment/listFetching',
         commentPublishing: 'comment/publishing',
-        articleDetail: 'detail'
+        articleDetail: 'article/detail'
       })
     },
     methods: {
@@ -44,33 +44,33 @@
         clearList: 'comment/CLEAR_LIST'
       }),
       ...mapActions({
-        fetchingCommentList: 'comment/fetchList'
+        fetchCommentList: 'comment/fetchList'
       }),
-      handleSort({by, order}, params = {}) {
-        this.changeSort({by, order})
+      handleSort ({ by, order }, params = {}) {
+        this.changeSort({ by, order })
         params = Object.assign({
           page: 1,
           type: 1
         }, params)
         if (this.articleDetail) {
           params.type = 0
-          params.article = this.articleDetail.id
+          params.article = this.articleDetail._id
         }
         if (params.page === 1) {
           this.clearList()
         }
-        this.fetchingCommentList(params)
+        this.fetchCommentList(params)
       },
-      handleLoadmore(page) {
-        this.handleSort(this.commentSort, {page})
+      handleLoadmore (page) {
+        this.handleSort(this.commentSort, { page })
       },
-      handleReply() {
+      handleReply () {
         this.$emit('on-publish')
       },
-      handlePublish(comment) {
+      handlePublish (comment) {
         this.$emit('on-publish', comment)
         this.handleSort({
-          by: 'createAt',
+          by: 'createdAt',
           order: -1
         }, {
           page: 1
