@@ -145,7 +145,7 @@
         this.fetching = true
         const { success, data } = await api.comment.list({
           params: Object.assign({}, {
-            article: this.comment.article,
+            article: this.comment.article.id,
             per_page: this.pagination.per_page || 5,
             page: (this.pagination ? this.pagination.cur_page : 0) + 1,
             parent: this.comment.id
