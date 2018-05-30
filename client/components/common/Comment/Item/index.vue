@@ -34,11 +34,11 @@
           {{ (comment.subCount > 0 ? `${comment.subCount}个` : '') + listType }}
         </span>
       </a>
-      <span class="status-item location" v-if="comment.meta.location && comment.meta.location.country && comment.meta.location.city">
+      <!--<span class="status-item location" v-if="comment.meta.location && comment.meta.location.country && comment.meta.location.city">
         <span>{{ comment.meta.location.country }}</span>
         <span v-if="comment.meta.location.city">&nbsp;-&nbsp;</span>
         <span>{{ comment.meta.location.city }}</span>
-      </span>
+      </span>-->
       <time class="status-item time" :datatitme="comment.createdAt">
         {{ comment.createdAt | getDateFromNow }}
       </time>
