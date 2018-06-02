@@ -34,13 +34,13 @@
           {{ (comment.subCount > 0 ? `${comment.subCount}个` : '') + listType }}
         </span>
       </a>
-      <!--<span class="status-item location" v-if="comment.meta.location && comment.meta.location.country && comment.meta.location.city">
-        <span>{{ comment.meta.location.country }}</span>
-        <span v-if="comment.meta.location.city">&nbsp;-&nbsp;</span>
-        <span>{{ comment.meta.location.city }}</span>
-      </span>-->
-      <time class="status-item time" :datatitme="comment.createdAt">
-        {{ comment.createdAt | getDateFromNow }}
+      <span class="status-item location" v-if="comment.meta.location">
+        <span>{{ comment.meta.location}}</span>
+        <!--<span v-if="comment.meta.location.city">&nbsp;-&nbsp;</span>
+        <span>{{ comment.meta.location.city }}</span>-->
+      </span>
+      <time class="status-item time" :datatitme="comment.createAt">
+        {{ comment.createAt | getDateFromNow }}
       </time>
     </div>
     <transition name="fade">
@@ -95,7 +95,7 @@
         pagination: {},
         // 默认最新评论
         sort: {
-          by: 'createdAt',
+          by: 'createAt',
           order: -1
         }
       }
@@ -189,7 +189,7 @@
           this.showSub = !this.showSub
           if (this.showSub) {
             this.handleSubSort({
-              by: 'createdAt',
+              by: 'createAt',
               order: -1
             })
           }
@@ -215,7 +215,7 @@
       handleReplyPublish () {
         this.$emit('on-reply-publish')
         this.handleSubSort({
-          by: 'createdAt',
+          by: 'createAt',
           order: -1
         }, {
           page: 1

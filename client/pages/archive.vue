@@ -34,8 +34,8 @@
                   <ul class="list article-list">
                     <li class="article-item" v-for="article in month.articles" :key="article.id">
                       <article class="article">
-                        <time class="time" :datatitme="article.createdAt">
-                          {{ article.createdAt | fmtDate('MM-dd') }}
+                        <time class="time" :datatitme="article.createAt">
+                          {{ article.createAt | fmtDate('MM-dd') }}
                         </time>
                         <nuxt-link class="link"
                           :to="`/article/${article.id}`">

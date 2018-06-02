@@ -54,7 +54,7 @@
         }, params)
         if (this.articleDetail) {
           params.type = 0
-          params.article = this.articleDetail._id
+          params.article = this.articleDetail.id
         }
         if (params.page === 1) {
           this.clearList()
@@ -70,7 +70,7 @@
       handlePublish (comment) {
         this.$emit('on-publish', comment)
         this.handleSort({
-          by: 'createdAt',
+          by: 'createAt',
           order: -1
         }, {
           page: 1

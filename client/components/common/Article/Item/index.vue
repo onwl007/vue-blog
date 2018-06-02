@@ -29,9 +29,9 @@
           {{ article.meta.pvs }} 次阅读
         </div>
       </div>
-      <time class="time" :datatitme="article.createdAt">
+      <time class="time" :datatitme="article.createAt">
         <i class="icon icon-time"></i>
-        {{ article.createdAt | fmtDate('yyyy-MM-dd') }}
+        {{ article.createAt | fmtDate('yyyy-MM-dd') }}
       </time>
     </div>
   </article>

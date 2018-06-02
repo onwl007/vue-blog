@@ -187,7 +187,7 @@
           content: this.content
         }, params)
         if (this.authInfo) {
-          params.author = this.authInfo.id
+          params.author = this.authInfo
           if (this.checkUserInfoChange()) {
             params.author = {
               id: this.authInfo.id,

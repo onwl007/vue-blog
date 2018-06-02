@@ -93,7 +93,7 @@
     },
     fetch ({ params, store }) {
       store.commit('comment/CHANGE_SORT', {
-        by: 'createdAt',
+        by: 'createAt',
         order: -1
       })
       return Promise.all([

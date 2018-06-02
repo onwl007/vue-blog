@@ -19,7 +19,7 @@ const PUBLISH_SUCCESS = 'PUBLISH_SUCCESS'
 export const state = () => ({
   // 默认最新评论
   sort: {
-    by: 'createdAt',
+    by: 'createAt',
     order: -1
   },
   list: {

@@ -8,7 +8,7 @@
           个{{ listType }}
         </div>
         <div class="sort">
-          <a class="sort-type" :class="{ active: latestSort }" @click="handleSort('createdAt', -1)">最新排序</a>
+          <a class="sort-type" :class="{ active: latestSort }" @click="handleSort('createAt', -1)">最新排序</a>
           <i class="seprate"></i>
           <a class="sort-type" :class="{ active: hottestSort }" @click="handleSort('ups', -1)">最热排序</a>
         </div>
@@ -66,7 +66,7 @@
         },
         default () {
           return {
-            by: 'createdAt',
+            by: 'createAt',
             order: -1
           }
         }
@@ -107,7 +107,7 @@
       }),
       latestSort () {
         const { by, order } = this.sort
-        return by === 'createdAt' && order === -1
+        return by === 'createAt' && order === -1
       },
       hottestSort () {
         const { by, order } = this.sort
