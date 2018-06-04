@@ -16,7 +16,7 @@
         <i class="corner" :style="cornerStyle"></i>
       </div>
       <div class="nav-action">
-        <form class="action-item search" :class="{ open:searchOpened}" role="search"
+        <form class="action-item search" :class="{ opened:searchOpened}" role="search"
               @submit.stop.prevent="handleSearch">
           <input name="search" class="search-input"
                  ref="searchInput"
