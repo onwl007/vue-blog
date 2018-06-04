@@ -23,7 +23,7 @@
                  type="search"
                  autocomplete="off"
                  :autofocus="false"
-                 placeholder="搜索...测试是是是"
+                 placeholder="搜索"
                  maxlength="200"
                  v-model.trim="keyword"
                  v-clickoutside="handleCloseSearch"
