@@ -5,7 +5,7 @@
 'use strict'
 
 const isProd = process.env.NODE_ENV === 'production'
-const description = 'On the way to life'
+const description = 'fighting'
 const themeColor = '#302e31'
 
 module.exports = {
@@ -17,8 +17,8 @@ module.exports = {
   },
   dev: !isProd,
   head: {
-    title: 'Jooger.me - ' + description,
-    titleTemplate: '%s - Jooger.me',
+    title: 'onwl007 - ' + description,
+    titleTemplate: '%s - onwl007.me',
     htmlAttrs: {
       xmlns: 'http://www.w3.org/1999/xhtml',
       lang: 'zh'
@@ -38,11 +38,11 @@ module.exports = {
       { name: 'screen-orientation', content: 'portrait' },
       { name: 'x5-orientation', content: 'portrait' },
       { name: 'msapplication-tap-highlight', content: 'no' },
-      { name: 'apple-mobile-web-app-title', content: 'Jooger.me - ' + description },
+      { name: 'apple-mobile-web-app-title', content: 'onwl007.me - ' + description },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
-      { name: 'author', content: 'zzy1198258955@163.com' },
+      { name: 'author', content: 'onwl007@gmail.com' },
       { name: 'theme-color', content: themeColor },
-      { hid: 'keywords', name: 'keywords', content: 'Jooger,jooger.me,Blog,FE,前端,朱志洋,Vue,Angular,React,Node.js' },
+      { hid: 'keywords', name: 'keywords', content: 'onwl007,onwl007.me,Blog' },
       { hid: 'description', name: 'description', content: description }
     ],
     link: [

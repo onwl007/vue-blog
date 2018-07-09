@@ -23,12 +23,12 @@
         </div>
         <div class="content md-body" v-html="articleDetail.renderedContent"></div>
         <div class="tags">
-        <!--  <Tag v-for="tag in articleDetail.tag"
+        <Tag v-for="tag in articleDetail.tag"
             :key="tag.id"
             :name="tag.name"
             :icon="getExtendsItemByKey('icon', tag.extends) || 'tag'"
             link>
-          </Tag>-->
+          </Tag>
         </div>
       </article>
       <Affix class="article-action" offsetTop="80" v-if="articleDetail && !mobileLayout">
